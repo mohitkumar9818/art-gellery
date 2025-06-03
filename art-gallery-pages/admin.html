@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+  <div class="admin-container">
+    <h2>Admin Panel</h2>
+    <form id="adminForm">
+      <input type="text" placeholder="Artwork Title" required />
+      <input type="text" placeholder="Image URL" required />
+      <textarea placeholder="Description" required></textarea>
+      <button type="submit">Add Artwork</button>
+    </form>
+
+    <div class="art-list">
+      <h3>Existing Artworks</h3>
+      <ul id="artItems">
+        <li>Nature Beauty <button>Update</button> <button>Delete</button></li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
