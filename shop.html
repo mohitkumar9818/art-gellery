@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shop Artworks</title>
+  <link rel="stylesheet" href="shop.css" />
+</head>
+<body>
+  <header class="shop-header">
+    <h1>🛍️ Shop Artworks</h1>
+    <input type="text" id="shopSearch" placeholder="Search artwork by name or style..." />
+  </header>
+
+  <main class="shop-grid" id="shopItems">
+    <!-- Art product cards -->
+  </main>
+
+  <script>
+    const products = [
+      { name: "Mystic Forest", style: "Nature", price: "₹999", img: "https://via.placeholder.com/300x200/77c", },
+      { name: "Abstract Lines", style: "Abstract", price: "₹1,299", img: "https://via.placeholder.com/300x200/dd7", },
+      { name: "Modern Blue", style: "Modern", price: "₹1,599", img: "https://via.placeholder.com/300x200/7bd", },
+      { name: "Bold Pop", style: "Pop Art", price: "₹899", img: "https://via.placeholder.com/300x200/f87", },
+    ];
+
+    const shopGrid = document.getElementById("shopItems");
+
+    function renderShop(items) {
+      shopGrid.innerHTML = "";
+      if (items.length === 0) {
+        shopGrid.innerHTML = "<p class='no-results'>No products found.</p>";
+        return;
+      }
+
+      items.forEach(p => {
+        const card = document.createElement("div");
+        card.className = "shop-card";
+        card.innerHTML = \`
+          <img src="\${p.img}" alt="\${p.name}">
+          <div class="shop-info">
+            <h3>\${p.name}</h3>
+            <p class="style">\${p.style}</p>
+            <p class="price">\${p.price}</p>
+            <button class="buy-btn">Buy Now</button>
+          </div>
+        \`;
+        shopGrid.appendChild(card);
+      });
+    }
+
+    document.getElementById("shopSearch").addEventListener("input", function() {
+      const val = this.value.toLowerCase();
+      const filtered = products.filter(p => p.name.toLowerCase().includes(val) || p.style.toLowerCase().includes(val));
+      renderShop(filtered);
+    });
+
+    renderShop(products);
+  </script>
+</body>
+</html>
